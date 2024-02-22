@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Diving Gestures Detection</title>
+    <style>
+        /* Simple CSS to center the video on the page */
+        body {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        video {
+            border: 3px solid #333;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<video id="videoElement" autoplay playsinline></video>
+
+<script>
+    // Access the video element
+    const videoElement = document.getElementById('videoElement');
+
+    // Prompt the user for permission, get the stream
+    navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+        videoElement.srcObject = stream;
+    }).catch(error => {
+        console.error("Error accessing the camera", error);
+    });
+</script>
+
+</body>
+</html>
